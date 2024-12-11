@@ -1,0 +1,867 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --blueColor: rgb(13, 170, 243);
+    --boxShadow: 30px 30px 1px 1px rgba(40, 29, 85, 0.8);
+}
+body{
+    width: 100%;
+    height: 100%;
+    transition: background-color 0.4s;
+    background-color: rgb(230, 230, 230);
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+}
+/*HEADER SECTION*/
+header{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(29, 28, 28);
+    color: white;
+    font-size: medium;
+    font-weight: bold;
+    position: fixed;
+    z-index: 500;
+    box-shadow: 0 0 10px black;
+}
+header ul{
+    list-style: none;
+    display: flex;
+    gap: 4rem;
+    cursor: pointer;
+}
+header ul li a{
+    color: white;
+    text-decoration: none;
+}
+header img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 6.8rem; width: 6.8rem;
+    cursor: pointer;
+    position: relative;
+    left: 10px;
+}
+header input{
+    cursor: pointer;
+    appearance: none;
+    height: 20px;
+    width: 40px;
+    background-color: white;
+    border-radius: 15px;
+}
+header input::before{
+    content: '';
+    background-color: rgb(49, 48, 48);
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    border-radius: 15px;
+    transform: scale(0.9);
+    transition: all 0.125s;
+}
+header input:checked{
+    background-color: rgb(49, 48, 48);
+    box-shadow: inset 5px 5px 10px black;
+}
+header input:checked::before{
+    transform: translateX(20px) scale(0.9);
+    transition: all 0.125s;
+    background-color: white;
+} 
+header input:not(:checked){
+    background-color: white;
+}
+header .headerIcons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+    cursor: pointer;
+    margin-top: 7px;
+}
+header .headerIcons:not(:last-child){
+    margin-left: -50px;
+}
+header .humburgerIcon{
+    height: 1.8rem; width: 1.8rem;
+    fill: white;
+    position: relative;
+    right: 20px;
+    transition: all 2s ease;
+}
+header .nightLight{
+    fill: white;
+    position: relative;
+    left: 20px;
+    display: flex;
+    gap: 20px;
+    cursor: pointer;
+    margin-top: 7px;
+}
+.nighLightChange{
+    fill: orange !important;
+}
+.nightIcon:active{
+    transform: scale(0.8);
+    transition: all 0.28s;
+
+}
+.nightLightOverlay{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: orange;
+    z-index: 99999;
+    display: none;
+    pointer-events: none;
+    transition: all 1s;
+}
+.nightLightOverlayToggle{
+    display: block !important;
+}
+header .nightLight > svg{
+    height: 1.8rem;
+    width: 1.8rem;
+}
+.nightLightIntensity{
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    position: fixed;
+    top: 10.5%; left: 2%;
+    z-index: 99999;
+    display: none;
+}
+.nightLightIntensityActive{
+    display: block !important;
+}
+.menuSlide{
+    width: 250px;
+    max-height: 100%;
+    background-color: rgb(29, 28, 28);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 10px;
+    display: flex;
+    align-items: center; justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    position: fixed;
+    top: 10%;
+    right: -250px;
+    transition: all 0.28s;
+    z-index: 9999;
+}
+.menuSlide div{
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center; justify-content: center;
+    padding: 15px;
+    width: 100%;
+    gap: 10px;
+    color: white;
+}
+.menuSlide div a{
+    color: white;
+    text-decoration: none;
+}
+.menuSlide div:hover{
+    background-color: rgb(82, 81, 81);
+}
+.menuSlide svg{
+    transition: transform 0.5s;
+    width: 1.6rem;
+    height: 1.6rem;
+    fill: white; 
+}
+.menuSlide div:hover svg{
+    fill: rgba(0, 119, 255, 0.555);
+}
+.menuSlide div:active svg{
+    transform: scale(0.6);
+}
+.likeButtonRed{
+    fill: red !important;
+}
+.likeInfoModal {
+    position: fixed;
+    top: -8%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 999989;
+    color: white;
+    background-color: rgb(40, 29, 85);
+    height: 7%;
+    width: 10%;
+    border-radius: 15px;
+    left: 45%;
+    transition: all 0.15s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.aboutWeb{
+    position: fixed;
+    margin: auto;
+    top: 30%; 
+    bottom: 30%;
+    left: 30%;
+    right: 30%;
+    height: 50%;
+    border-radius: 20px;
+    background: transparent;
+    z-index: 9999;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;    
+    text-align: center;
+    gap: 20px;
+    font-weight: bold;
+    font-size: medium;
+    background-color: rgb(179, 179, 179);
+    color: rgba(40, 29, 85);
+    transition: all 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.aboutWeb .closeAbout{
+    height: 1.2rem; width: 1.2rem;
+    position: absolute;
+    top: 6%;
+    left: 90%;
+    fill: grey;
+    cursor: pointer;
+}
+.aboutWeb .aboutIcon{
+    height: 2rem; width: 2rem;
+    fill: white;
+    position: absolute;
+    top: 4%;
+    left: 50%;
+}
+.aboutWebDisplay{
+    display: flex !important;
+}
+.aboutWebClose{
+    display: none !important;
+}
+.blurThem{
+    filter: blur(50px);
+}
+.toTop{
+    background-color: white;
+    position: fixed;
+    top: 80vh;
+    right: 0;
+    padding: 8px;
+    display: none;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    cursor: pointer;
+    transition: all 0.15s;
+    z-index: 100;
+}
+.toTopShow{
+    display: flex !important;
+}
+.toTop:hover{
+    background-color: rgb(224, 224, 224);
+}
+.toTop svg{
+    fill: rgb(53, 53, 133);
+    width: 1.3rem;
+    height: 1.3rem;
+}
+/*HEADER SECTION END*/
+
+/*MAIN AND OTHER SECTIONS */
+main{
+    position: relative;
+    top: 30px;
+    height: 40rem; /*height: 100vh;*/
+    width: 100%;
+    background-image: url("images/5061805-01.png");
+    background-position: center 25%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center; justify-content: center;
+    scale: 0;
+} 
+.mainPictureTransit{
+    background-position: center 50%;
+    transition: all 3s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: scale 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+main .info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    position: relative;
+    color: rgb(168, 168, 168);
+    top: 4.5%;
+    padding: 5px;
+}
+main .info h1{
+    opacity: 0;
+    position: relative;
+    top: 1%;
+    font-size: 280%;
+    text-align: center;
+}
+.transittext{
+    opacity: 1 !important;
+    top: 10.42%;
+    transition: all 1.5s ease-in-out;
+    color: orange;
+    text-shadow: 5px 5px 30px rgba(175, 115, 87, 0.8);
+}
+main .info h2{
+    font-size: 180%;
+    position: relative;
+    top: 10.21%;
+    text-align: center;
+}
+main .info h3{
+    position: relative;
+    top: 8.91%;
+    font-weight: 600;
+    text-align: center;
+    word-spacing: 1px;
+    font-size: 110%;
+}
+main .info h2, main .info h3{
+    opacity: 0;
+    display: flex;
+}
+.h2Transit{
+    opacity: 1 !important;
+    transition: all .28s;
+    top: 26px !important;
+}
+.h3Transit{
+    opacity: 1 !important;
+    top: 10px !important;
+    transition: all .28s ease;
+}
+.buttonContainer{
+    display: flex;
+    gap: 2rem;
+    position: relative;
+    top: 13%;
+    opacity: 0;
+}
+.buttonContainer button{
+    padding: 15px;
+    width: fit-content;
+    border: 2px solid grey;
+    border-radius: 5px;
+    background: transparent;
+    color: white;
+    font-weight: bolder;
+    transition: all 0.25s;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+}
+.buttonContainer button:hover{
+    background-color: rgb(109, 109, 109);
+}
+.buttonContainer button:active{
+    background-color: rgb(139, 139, 139);
+    transform: scale(0.9);
+}
+.buttonTransit{
+    opacity: 1 !important;
+    transition: all .28s ease;
+    top: 90px;
+}
+.designerInfoSection{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+    padding-top: 80px;
+}
+.designerInfoSection [class^="designer"] {
+    display: flex;
+    justify-content: center;
+    flex: 1 1 48%;
+}
+.designerInfoSection .designerImage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s 0.5s cubic-bezier(0.19, 1, 0.22, 1), transform 1s 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.designerInfoSection .designerImage img{
+    width: 60%;
+    border-radius: 20px;
+    box-shadow: var(--boxShadow);
+    transition: all 0.15s;
+}
+.designerBoxShadowJS {
+    box-shadow: 6px 6px 12px 4px rgb(24 23 23) !important;
+}
+.designerInfoSection .designerInfo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 20px;
+    transition: all 0.5s 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.designerInfoSection .designerInfo .infoHeader{
+    scale: 1.3;
+    border-bottom: 1px solid rgb(204, 204, 204);
+    margin-bottom: 5px;
+}
+.designerInfoSection .designerInfo .myInfo{
+    color: grey;
+    width: 95%;
+    line-height: 28px;
+    text-align: center;
+}
+.designerInfoSection .designerInfo .animatingToBottom{
+    height: 3rem; width: 3rem;
+    fill: rgba(40, 29, 85, 0.8);
+    position: relative;
+    animation: animateToBottom 1s alternate infinite;
+}
+@keyframes animateToBottom{
+    from{
+        opacity: 0;
+        bottom: 0 ;
+    }
+    to{
+        opacity: 1;
+        bottom: -45px;
+    }
+}
+.designerInfoSection .designerInfo .myInfo::first-letter{
+    font-size: calc(150% * 2);
+    font-weight: bold;
+}
+.projectsSection{
+    padding-top: 80px;
+    margin-top: calc(25px * 3.5);
+    gap: 10px;
+}
+.tagContainer{
+    display: flex;
+    align-items: center; justify-content: center;
+    gap: 25px;
+}
+.tag{
+    width: 150px;
+    height: 40px;
+    background-color: orange;
+    border-radius: 5px;
+    clip-path: polygon(0% 0%, 100% 0%, 90% 50%, 100% 100%, 0% 100%, 10% 50%);
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    color: white; 
+    font-size: medium; 
+    font-weight: bold;
+}
+.projectsContainer{
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+}
+.projectsContainer [class^="proj"]{
+    background-color: rgb(241, 241, 241);
+    border-radius: 5px;
+    border: 2px solid rgb(216, 215, 215);
+    flex-basis: 25.33%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 10px;
+    transition: opacity 0.5s 0.5s cubic-bezier(0.19, 1, 0.22, 1), transform 1s 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.projectsContainer [class^="proj"]:hover{
+    border: 2px solid orange;
+    transition: border .35s;
+}
+.changeProjsJS {
+    border: 0 !important; 
+    background-color: rgba(128, 128, 128, 0.322) !important;
+    color: white !important;
+}
+.projectsContainer .head{
+    font-size: medium;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 5px;
+    color: grey;
+}
+.projectsContainer .image{
+    margin: auto;
+}
+.image img{
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+}
+.projectsContainer .description{
+    margin-left: 10px;
+    font-size: 90%;
+}
+.projectsContainer button{
+    width: 80px; height: 30px;
+    margin: auto;
+    border: 1px solid rgb(184, 184, 184);
+    margin-bottom: 5px;
+    cursor: pointer;
+    transition: all .15s;
+    background-color: white;
+    outline: none;
+}
+.projectsContainer button:hover{
+    width: 100px;
+    background-color: orange;
+    color: white;
+}
+.projectsContainer button:active{
+    scale: 0.9;
+}
+.projectsContainer h3{
+    text-align: center;
+    color: grey;
+}
+.skillSection{
+    padding-top: 80px;
+    margin-top: 25px;
+}
+.skillSection .skillContainer{
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    gap: 25px;
+    justify-content: center;
+}
+.skillContainer [class^="skill"]{
+    background-color:  rgb(241, 241, 241);
+    border-radius: 5px;
+    border: 2px solid rgb(216, 215, 215);
+    flex-basis: 25.33%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 30px;
+    transition: opacity 0.5s 0.5s cubic-bezier(0.19, 1, 0.22, 1), transform 1s 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.changeSkillsJS {
+    border: 0 !important;
+    background-color: rgba(128, 128, 128, 0.322) !important;
+    color: white !important;
+    
+}
+.skillContainer [class^="skill"] h3{
+    text-align: center;
+    color: grey;
+}
+.skillContainer [class^="skill"] ul{
+    list-style-type: none;
+    margin: auto;
+    display: flex;
+    flex-direction: column; 
+    gap: 5px;
+}
+.skillContainer [class^="skill"]:hover{
+    border: 2px solid var(--blueColor);
+    transition: border .35s;
+}
+.learnSection{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+}
+.learnSection .learnContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.learnSection .learnContainer .learnWithMe{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 50px;
+}
+.learnSection .learnContainer .learnWithMe [class^="learn"]{
+    display: flex;
+    border: 2px solid rgb(185, 185, 185);
+    border-radius: 10px;
+    align-items: center;
+    width: 14rem; height: 100%;
+    padding: 10px;
+    transition: border-color .15s;
+    flex: 1 1 40%;
+    text-align: center;
+}
+.learnSection .learnContainer .learnWithMe [class^="learn"]:hover{
+    border-color: orangered;
+}
+.learnSection .learnContainer .learnWithMe [class^="learn"] svg, .photoshopLogo{
+    height: 100px;
+    width: 100px;
+}
+.learnSection .learnContainer button{
+    padding: 10px;
+    width: 88.5px;
+    transition: all .15s;
+    border: 1px solid rgb(184, 184, 184);
+    outline: none;
+    cursor: pointer;
+}
+.learnSection .learnContainer button:hover{
+    width: 100px;
+    background-color: orangered;
+    color: white;
+}
+.learnSection .learnContainer button:active{
+    scale: 0.9;
+}
+.learnSection .learnContainer h2, .learnContainer h3{
+    color: grey;
+    text-align: center;
+}
+/*MAIN ENDS*/
+
+/*FOOTER*/
+footer{
+    margin-top: 20px;
+    background-color: rgb(29, 28, 28);
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 20px;
+    flex-wrap: wrap;
+    color: rgb(163, 162, 162);
+}
+footer svg{
+    height: 1.2rem; width: 1.2rem;
+}
+footer h5{
+    margin: auto;
+    margin-bottom: 5px;
+    width: fit-content;
+    border-bottom: 1px solid rgb(73, 73, 73);
+}
+footer ul{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+footer ul div{
+    display: flex;
+    gap: 10px;
+    font-size: 90%;
+}
+footer div{
+    fill: grey;
+}
+footer .contactsContainer{
+    display: flex;
+    flex-direction: column;
+}
+footer .contacts{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+footer .contacts div{
+    display: flex;
+    gap: 10px;
+    text-align: center;
+}
+footer .contacts svg{
+    fill: green;
+    position: relative;
+    top: 5px;
+}
+footer .email .mails{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+footer .email .mails div{
+    display: flex;
+    gap: 10px;
+}
+footer .email a{
+    text-decoration: none;
+    color: grey;
+}
+footer .email a:hover{
+    text-decoration: underline;
+}
+footer .email svg{
+    position: relative;
+    top: 3px;
+    fill: var(--blueColor);
+}
+footer .email .designer div{
+    display: flex;
+    gap: 15px;
+    position: relative;
+    top: 10px;
+}
+footer .email .designer div img{
+    border-radius: 50%;
+    height: 2.5rem; width: 2.5rem;
+}
+/*FOOTER ENDS*/
+
+.darkOverlay {
+    position: fixed;
+    z-index: 89773928736;
+    background-color: rgba(8, 8, 8, 0.959);
+    clip-path: circle(30%);
+    height: 1%;
+    width: 1%;
+    opacity: 0;
+    top: 50%;
+    left: 0%;
+}
+.showDarkModeOverlayJS {
+    animation: animateDarkModeOverlay 0.5s alternate cubic-bezier(0.19, 1, 0.22, 1);
+}
+@keyframes animateDarkModeOverlay {
+    from {
+        clip-path: circle(30%);
+        height: 10%;
+        width: 10%;
+    }
+    to {
+        clip-path: circle(100%);
+        border-radius: 0;
+        top: 0;
+        opacity: 1;
+        height: 100%;
+        width: 100%;
+    }
+}
+
+/*MEDIA QUERIES*/
+@media (max-width: 319px){
+    header ul{
+        display: none;
+    }
+    .menuSlide{
+        width: 100%; height: 100%;
+        right: -100%;
+        padding: 0;
+    }
+    main{
+        left: 5px;
+        right: 0;
+    }
+    main .info{
+        width: 100%;
+    }
+}
+@media (max-width: 520px){
+    .searchOverlay .closeSearch{
+        top: 5%;
+    }
+}
+@media (min-width: 520px){
+    .searchOverlay input{
+        flex-basis: 20rem;
+    }
+}
+@media (min-width: 320px) and ( max-width: 575px) {
+    header ul{
+        display: none;
+    }
+    .menuSlide{
+        width: 100%; height: 100%;
+        right: -100%;
+        padding: 0;
+    }
+    main .info{
+        width: 100%;
+    }
+    main .info h1{
+        font-size: 220%;
+    }
+    main .info h3{
+        font-size: 100%;
+    }
+}
+@media (min-width: 576px) and (max-width: 767px){
+    main .info{
+        width: 100%;
+    }
+}
+@media (min-width: 768px){
+    main{
+        align-items: center;
+        justify-content: flex-start;
+    }
+    main .info{
+        width: 60%;
+        padding-left: 0;
+    }
+}
+@media (min-width: 991px){
+    main .info h3{
+        width: 80%;
+    }
+    main .info{
+        margin-left: -45px;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px){
+    main{
+        align-items: center;
+        justify-content: flex-start;
+    }
+    main .info{
+        width: 60%;
+        padding-left: 0;
+    }
+}
+@media (min-width:576px) and (max-width:869px) {
+    header ul{
+        display: none;
+    }
+}
+@media (max-width: 425px){
+    .aboutWeb{
+        left: 0; right: 0;
+        width: 90%;
+        height: 65%;
+    }
+}
+@media (min-width: 424px) and (max-width: 971px) {
+    .aboutWeb{
+        height: 65%;
+        width: 60%;
+        left: 0; right: 0;
+    }
+}
+/*END*/
